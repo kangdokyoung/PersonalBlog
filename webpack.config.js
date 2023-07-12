@@ -15,6 +15,7 @@ module.exports = (env, argv) => {
             filename: "[name].js",
         },
         devServer: {
+            historyApiFallback:true,
             port: 3000,
             hot: true,
         },

@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AiFillGithub, AiOutlineMail } from 'react-icons/ai'
-
+import { AiFillGithub, AiOutlineMail } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 
 const Scontainer = styled.section`
-    position: absolute;
+    position: fixed;
     width : 400px;
+    z-index:1;
     @media screen and (max-width: 768px){
         transform: translateX(-400px);
     }
@@ -23,18 +24,32 @@ const Sbackgorund = styled.div`
     flex-direction:column;
     align-items:center;
     justify-content:space-around;
+    @media screen and (max-height: 980px){
+        height: 80vh;
+        min-height: 500px;
+    }
 `
 
 
 const Sprofile = styled.div`
-    background-color: white;
     width: 280px;
     height: 280px;
     border-radius: 50%;
     margin-top: 20px;
+    @media screen and (max-height: 980px){
+        display:none;
+    }
 `
 
-const SnameBox = styled.div`
+const Simg = styled.img`
+    width: 100%;
+    height: 100%;
+    border-radius:50%;
+    z-index:1;
+    user-select:none;
+`
+
+const SnameBox = styled.nav`
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -50,7 +65,7 @@ const Sintro = styled.div`
     user-select:none;
 `
 
-const SbtnBox = styled.div`
+const SbtnBox = styled.nav`
     display:flex;
     width: 40%;
     justify-content: space-between;
@@ -85,7 +100,7 @@ const ScategoryList = styled.li`
     }
 `
 
-const SvisitBox = styled.div`
+const SvisitBox = styled.nav`
     display:flex;
     justify-content: space-between;
     width: 60%;
@@ -96,7 +111,7 @@ const Svisit = styled.div`
     user-select:none;
 `
 
-const SendBox = styled.div`
+const SendBox = styled.nav`
     display:flex;
     justify-content:space-between;
     width: 60%;
@@ -104,6 +119,7 @@ const SendBox = styled.div`
 
 const Sresume = styled.a`
     text-decoration:none;
+    color: black;
     background-color: #D9D9D9;
     border-radius: 12px;
     width: 80px;
@@ -128,6 +144,8 @@ const Slogin = styled.div`
 
 const Sidebar:React.FC = () => {
 
+    const profileImg = 'https://ifh.cc/g/ZTYyjD.webp';
+
     const handleCopyClipBoard = async (text: string) =>{
         try{
             await navigator.clipboard.writeText(text);
@@ -139,9 +157,13 @@ const Sidebar:React.FC = () => {
     return (
         <Scontainer>
             <Sbackgorund>
-                <Sprofile />
+                <Sprofile>
+                    <Simg alt='profileImge' src={profileImg} />
+                </Sprofile>
                 <SnameBox>
-                    <Sname>강도경</Sname>
+                    <Link to={'/'} style={{textDecoration:"none", color:"black"}}>
+                        <Sname>강도경</Sname>
+                    </Link>
                     <Sintro>블로그에 오신걸 환영합니다!</Sintro>
                 </SnameBox>
                 <SbtnBox>
@@ -160,7 +182,9 @@ const Sidebar:React.FC = () => {
                 </SvisitBox>
                 <SendBox>
                     <Sresume href='https://kangdokyoung.github.io/resume/' target="_blank">resume</Sresume>
-                    <Slogin>로그인</Slogin>
+                    <Link to={'/login'} style={{textDecoration:'none', color:'black'}}>
+                        <Slogin>로그인</Slogin>
+                    </Link>
                 </SendBox>
             </Sbackgorund>
         </Scontainer>
