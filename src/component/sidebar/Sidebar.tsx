@@ -172,7 +172,9 @@ const Sidebar:React.FC = () => {
                 </SbtnBox>
                 <Scategory>
                     <ScategoryList>전체 글</ScategoryList>
-                    <ScategoryList>공지</ScategoryList>
+                    <Link to={'/post'} style={{textDecoration:"none", color:"black"}}>
+                        <ScategoryList>공지</ScategoryList>
+                    </Link>
                     <ScategoryList>코딩</ScategoryList>
                     <ScategoryList>etc</ScategoryList>
                 </Scategory>

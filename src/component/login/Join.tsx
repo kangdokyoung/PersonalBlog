@@ -4,7 +4,6 @@ import { SiNaver, SiKakaotalk } from 'react-icons/si'
 import { BsGoogle } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
 
-
 const Scontainer = styled.div`
     width: 60vw;
     min-height: 90vh;
@@ -124,26 +123,16 @@ const SkakaoBgd = styled.div`
     border-radius:20px;
 `
 
-const Login:React.FC = () => {
-
-
-    const Rest_api_key='ed4e4e31919eb02a881edce8ca08108a' //REST API KEY
-    const redirect_uri = 'http://localhost:3000' //Redirect URI
-    // oauth 요청 URL
-    const kakaoURL = `https://kauth.kakao.com/oauth/authorize?client_id=${Rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`
-    const handleLogin = ()=>{
-        window.location.href = kakaoURL
-    }
-
-
+const Join:React.FC = () => {
     return (
         <Scontainer>
+            
             <SmainBtnBox>
-                <Link to={'/'}>
+                <Link to={'/login'}>
                     <SmainBtn />
                 </Link>
             </SmainBtnBox>
-            <Stitle>로그인</Stitle>
+            <Stitle>회원가입</Stitle>
             <SloginBox>
                 <SinputBox>
                     <Stext>이메일</Stext>
@@ -153,20 +142,25 @@ const Login:React.FC = () => {
                     <Stext>비밀번호</Stext>
                     <Sinput type={'password'} />
                 </SinputBox>
+                <SinputBox>
+                    <Stext>비밀번호</Stext>
+                    <Sinput type={'password'} />
+                </SinputBox>
+                <SinputBox>
+                    <Stext>닉네임</Stext>
+                    <Sinput type={'text'} />
+                </SinputBox>
                 <SbtnBox>
-                    <SpushBtn>로그인</SpushBtn>
-                    <Link to={'/join'}>
-                        <SpushBtn>회원가입</SpushBtn>
-                    </Link>
+                    <SpushBtn>회원가입</SpushBtn>
                 </SbtnBox>
             </SloginBox>
             <SoauthBox>
                 <SoauthBtn><BsGoogle color='black' size={'2em'} /></SoauthBtn>
                 <SoauthBtn><SiNaver color='rgb(3, 199, 90)' size={'2em'} /></SoauthBtn>
-                <SoauthBtn onClick={handleLogin}><SkakaoBgd><SiKakaotalk color='yellow' size={'2em'}  /></SkakaoBgd></SoauthBtn>
+                <SoauthBtn><SkakaoBgd><SiKakaotalk color='yellow' size={'2em'}  /></SkakaoBgd></SoauthBtn>
             </SoauthBox>
         </Scontainer>
     );
 };
 
-export default Login;
+export default Join;
