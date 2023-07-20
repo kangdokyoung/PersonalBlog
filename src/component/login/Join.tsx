@@ -1,26 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { SiNaver, SiKakaotalk } from 'react-icons/si'
 import { BsGoogle } from 'react-icons/bs'
 import { Link } from 'react-router-dom';
-
-const Scontainer = styled.div`
-    width: 60vw;
-    min-height: 90vh;
-    padding-bottom: 100px;
-    position:relative;
-    overflow:visible;
-    margin: 40px 0px 0px 500px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-around;
-    align-items:center;
-    @media screen and (max-width: 768px){
-        margin-left: 0px;
-        overflow:visible;
-        width: 100vw;
-    }
-`
+import { LoginProps } from './Login';
 
 const SmainBtnBox = styled.div`
     width: 100%;
@@ -95,71 +78,58 @@ const SpushBtn = styled.button`
     font-size: 16px;
 `
 
-const SoauthBox = styled.div`
-    width: 100%;
-    display:flex;
-    justify-content:center;
-`
+const Join:React.FC<LoginProps> = (props) => {
+    const {setLogin} = props;
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [checkPassword, setCheckPassword] = useState('');
+    const [nickName, setNickName] = useState('');
 
-const SoauthBtn = styled.button`
-    width: 60px;
-    height: 60px;
-    margin: 15px;
-    display:flex;
-    border: none;
-    border-radius: 20px;
-    justify-content:center;
-    align-items:center;
-    background-color: #d9d9d9;
-    :hover{
-        cursor:pointer;
+    const inputEmail = (e:any)=>{
+        setEmail(e.target.value);
     }
-`
+    const inputPassword = (e:any)=>{
+        setPassword(e.target.value);
+    }
+    const inputCheckPassword = (e:any)=>{
+        setCheckPassword(e.target.value);
+    }
+    const inputNickName = (e:any)=>{
+        setNickName(e.target.value);
+    }
 
-const SkakaoBgd = styled.div`
-    background-color: black;
-    width: 25px;
-    height: 25px;
-    border-radius:20px;
-`
+    const checkJoin = ()=>{
 
-const Join:React.FC = () => {
+    }
+
     return (
-        <Scontainer>
-            
+        <>
             <SmainBtnBox>
-                <Link to={'/login'}>
-                    <SmainBtn />
-                </Link>
+                <SmainBtn onClick={()=>setLogin(0)} />
             </SmainBtnBox>
             <Stitle>회원가입</Stitle>
             <SloginBox>
                 <SinputBox>
                     <Stext>이메일</Stext>
-                    <Sinput type={'email'} />
+                    <Sinput type={'email'} value={email} onChange={(e)=>inputEmail(e)} />
                 </SinputBox>
                 <SinputBox>
                     <Stext>비밀번호</Stext>
-                    <Sinput type={'password'} />
+                    <Sinput type={'password'} value={password} onChange={(e)=>inputPassword(e)} />
                 </SinputBox>
                 <SinputBox>
-                    <Stext>비밀번호</Stext>
-                    <Sinput type={'password'} />
+                    <Stext>비밀번호 확인</Stext>
+                    <Sinput type={'password'} value={checkPassword} onChange={(e)=>inputCheckPassword(e)} />
                 </SinputBox>
                 <SinputBox>
                     <Stext>닉네임</Stext>
-                    <Sinput type={'text'} />
+                    <Sinput type={'text'} value={nickName} onChange={(e)=>inputNickName(e)} />
                 </SinputBox>
                 <SbtnBox>
                     <SpushBtn>회원가입</SpushBtn>
                 </SbtnBox>
             </SloginBox>
-            <SoauthBox>
-                <SoauthBtn><BsGoogle color='black' size={'2em'} /></SoauthBtn>
-                <SoauthBtn><SiNaver color='rgb(3, 199, 90)' size={'2em'} /></SoauthBtn>
-                <SoauthBtn><SkakaoBgd><SiKakaotalk color='yellow' size={'2em'}  /></SkakaoBgd></SoauthBtn>
-            </SoauthBox>
-        </Scontainer>
+        </>
     );
 };
 

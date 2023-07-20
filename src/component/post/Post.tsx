@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PostDetail from './PostDetail';
 
 const Scontainer = styled.div`
     width: 60vw;
@@ -33,13 +34,23 @@ const SpostBox = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:
+    overflow:auto;
+    margin-top:20px;
+    flex-grow:1;
 `
 
 const Post:React.FC = () => {
+    const list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+
     return (
         <Scontainer>
             <Stitle>공지</Stitle>
-            <SpostBox></SpostBox>
+            <SpostBox>
+                {list.map((data, i)=>{
+                    return(<PostDetail key={i} />)
+                })}
+            </SpostBox>
         </Scontainer>
     );
 };

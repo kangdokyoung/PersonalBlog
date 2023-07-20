@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 
@@ -81,22 +82,29 @@ const PostBox:React.FC<PostTitle> = (props) => {
             <Sname>{name}</Sname> 
             <SpostList>
                 <Spost title='적당한 글'>
-                    <Stitle>적당한 글</Stitle>
+                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
+                        <Stitle>적당한 글</Stitle>
+                    </Link>
                     <Sdate>2023.07.01</Sdate>
                 </Spost>
                 <Spost title='적당한 글'>
-                    <Stitle>적당한 글</Stitle>
+                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
+                        <Stitle>적당한 글</Stitle>
+                    </Link>
                     <Sdate>2023.07.01</Sdate>
                 </Spost>
                 <Spost title='적당한 글'>
-                    <Stitle>적당한 글</Stitle>
+                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
+                        <Stitle>적당한 글</Stitle>
+                    </Link>
                     <Sdate>2023.07.01</Sdate>
                 </Spost>
                 <Spost title='적당한 글'>
-                    <Stitle>적당한 글</Stitle>
+                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
+                        <Stitle>적당한 글</Stitle>
+                    </Link>
                     <Sdate>2023.07.01</Sdate>
                 </Spost>
-                
             </SpostList>
         </Scontainer>
     );
