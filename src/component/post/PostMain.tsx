@@ -8,7 +8,7 @@ const Scontainer = styled.div`
     padding-bottom: 100px;
     position:relative;
     overflow:visible;
-    margin: 40px 0px 0px 500px;
+    margin-left: 500px;
     display:flex;
     flex-direction:column;
     justify-content:space-around;
@@ -56,10 +56,19 @@ const ScommentBox = styled.div`
     display:flex;
     flex-direction:column;
     justify-content:center;
+    align-items:center;
 `
 
-const Swirte = styled.textarea`
-    width: 95%;
+const SwriteBox = styled.div`
+    width: 100%;
+    height: 80px;
+    display:flex;
+    justify-content:center;
+`
+
+
+const Swirte = styled.input`
+    width: 75%;
     height: 70px;
     background-color: white;
     margin: 20px;
@@ -68,11 +77,18 @@ const Swirte = styled.textarea`
     resize:none;
 `
 
+const SsubmitBtn = styled.button`
+    width: 12%;
+    height: 70px;
+    cursor:pointer;
+    border-radius: 20px;
+    margin:20px;
+`
 
 const PostMain:React.FC = () => {
-    const [comment, setComment] = useState('')
+    const [comment, setComment] = useState('');
 
-    const inputComment = (e:any)=>{
+    const inputComment = (e:React.ChangeEvent<HTMLInputElement>)=>{
         setComment(e.target.value)
     }
     return (
@@ -84,7 +100,10 @@ const PostMain:React.FC = () => {
                     ㅁㄴㅇㄹ
                 </SMain>
                 <ScommentBox>
-                    <Swirte maxLength={200} placeholder='댓글 작성하기' onChange={(e)=>inputComment(e)} />
+                    <SwriteBox>
+                        <Swirte maxLength={200} placeholder='댓글 작성하기' onChange={(e)=>inputComment(e)} value={comment} />
+                        <SsubmitBtn>입력</SsubmitBtn>
+                    </SwriteBox>
                     <Comment />
                 </ScommentBox>
             </SmainBox>

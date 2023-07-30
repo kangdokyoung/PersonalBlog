@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { SiNaver, SiKakaotalk } from 'react-icons/si'
-import { BsGoogle } from 'react-icons/bs'
-import { Link } from 'react-router-dom';
 import { LoginProps } from './Login';
 
 const SmainBtnBox = styled.div`
@@ -44,8 +41,8 @@ const SinputBox = styled.div`
 `
 
 const Stext = styled.span`
-    width: 150px;
-    min-width: 100px;
+    width: 170px;
+    min-width: 170px;
     text-align:center;
     font-size: 24px;
     font-weight: regular;
@@ -96,10 +93,6 @@ const Join:React.FC<LoginProps> = (props) => {
     }
     const inputNickName = (e:any)=>{
         setNickName(e.target.value);
-    }
-
-    const checkJoin = ()=>{
-
     }
 
     return (

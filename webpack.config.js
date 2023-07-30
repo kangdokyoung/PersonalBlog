@@ -20,7 +20,7 @@ module.exports = (env, argv) => {
             hot: true,
         },
         resolve: {
-            extensions: [".js", ".jsx", ".ts", ".tsx"],
+            extensions: [".js", ".jsx", ".ts", ".tsx",'.css'],
         },
         module: {
             rules: [
@@ -28,6 +28,10 @@ module.exports = (env, argv) => {
                 test: /\.tsx?$/,
                 use: ["babel-loader", "ts-loader"],
             },
+            {
+                test: /\.css?$/,
+                use: ['style-loader', 'css-loader'],
+              },
             ],
         },
         plugins: [

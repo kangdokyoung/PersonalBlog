@@ -8,7 +8,7 @@ const Scontainer = styled.div`
     padding-bottom: 100px;
     position:relative;
     overflow:visible;
-    margin: 40px 0px 0px 500px;
+    margin-left: 500px;
     display:flex;
     flex-direction:column;
     justify-content:space-around;
@@ -26,6 +26,7 @@ const Stitle = styled.div`
     text-align:left;
     font-size: 30px;
     font-weight: bold;
+    margin-top:30px;
 `
 
 const SpostBox = styled.div`

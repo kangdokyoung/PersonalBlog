@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { AiFillGithub, AiOutlineMail } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import { PiPencilSimpleLineThin } from 'react-icons/pi';
 
 
 const Scontainer = styled.section`
@@ -32,18 +33,21 @@ const Sbackgorund = styled.div`
 
 
 const Sprofile = styled.div`
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     margin-top: 20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     @media screen and (max-height: 980px){
         display:none;
     }
 `
 
 const Simg = styled.img`
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
     border-radius:50%;
     z-index:1;
     user-select:none;
@@ -53,6 +57,12 @@ const SnameBox = styled.nav`
     display:flex;
     flex-direction:column;
     align-items:center;
+`
+
+const SwriteSpace = styled.div`
+    display:flex;
+    width: 100%;
+    justify-content:center;
 `
 
 const Sname = styled.div`
@@ -73,6 +83,9 @@ const SbtnBox = styled.nav`
 
 const Sbtn = styled.a`
     transition: all 0.1s;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
     :hover{
         transform: scale(1.1);
     }
@@ -161,14 +174,19 @@ const Sidebar:React.FC = () => {
                     <Simg alt='profileImge' src={profileImg} />
                 </Sprofile>
                 <SnameBox>
-                    <Link to={'/'} style={{textDecoration:"none", color:"black"}}>
-                        <Sname>강도경</Sname>
-                    </Link>
+                    <SwriteSpace>
+                        <Link to={'/'} style={{textDecoration:"none", color:"black"}}>
+                            <Sname>강도경</Sname>
+                        </Link>
+                        <Link to={'newPost'} style={{textDecoration:"none", color:"black"}}>
+                            <Sbtn><PiPencilSimpleLineThin color='black' size={'1em '} /></Sbtn>
+                        </Link>
+                    </SwriteSpace>
                     <Sintro>블로그에 오신걸 환영합니다!</Sintro>
                 </SnameBox>
                 <SbtnBox>
                     <Sbtn href='https://github.com/kangdokyoung' target="_blank"><AiFillGithub color='black' size={'2em'} /></Sbtn>
-                    <Sbtn href='#' onClick={()=>{handleCopyClipBoard('ehrud6672@naver.com')}}><AiOutlineMail color='black' size={'2em'} /></Sbtn>
+                    <Sbtn onClick={()=>{handleCopyClipBoard('ehrud6672@naver.com')}}><AiOutlineMail color='black' size={'2em'} /></Sbtn>
                 </SbtnBox>
                 <Scategory>
                     <ScategoryList>전체 글</ScategoryList>

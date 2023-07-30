@@ -10,9 +10,10 @@ const Scontainer = styled.div`
     width: 60vw;
     min-height: 90vh;
     padding-bottom: 100px;
+    height: 100vh;
     position:relative;
     overflow:visible;
-    margin: 40px 0px 0px 500px;
+    margin-left: 500px;
     display:flex;
     flex-direction:column;
     justify-content:space-around;
@@ -73,6 +74,7 @@ const LoginPage:React.FC = () => {
                 <SoauthBtn onClick={handleLogin}><SkakaoBgd><SiKakaotalk color='yellow' size={'2em'}  /></SkakaoBgd></SoauthBtn>
             </SoauthBox>
         </Scontainer>
+
     );
 };
 

@@ -9,7 +9,7 @@ const Scontainer = styled.div`
     padding-bottom: 100px;
     position:relative;
     overflow:visible;
-    margin: 40px 0px 0px 500px;
+    margin-left: 500px;
     display:flex;
     flex-wrap: wrap;
     @media screen and (max-width: 768px){
