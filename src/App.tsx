@@ -10,11 +10,6 @@ import LoginPage from "./page/LoginPage";
 import PostMain from "./component/post/PostMain";
 import NewPost from "./component/post/NewPost";
 
-const Sbackground = styled.div`
-    background-color: #f3f3f3;
-    position:relative;
-`
-
 
 const GlobalStyle = createGlobalStyle`
 *, *::before, *::after {
@@ -46,3 +41,10 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+
+
+const Sbackground = styled.div`
+    background-color: #f3f3f3;
+    position:relative;
+`

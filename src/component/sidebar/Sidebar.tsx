@@ -3,6 +3,71 @@ import styled from 'styled-components';
 import { AiFillGithub, AiOutlineMail } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { PiPencilSimpleLineThin } from 'react-icons/pi';
+import { useDispatch } from 'react-redux';
+import { changeCategory } from '../../Slices';
+
+
+const Sidebar:React.FC = () => {
+    const dispatch = useDispatch();
+
+    const profileImg = 'https://ifh.cc/g/ZTYyjD.webp';
+
+    const handleCopyClipBoard = async (text: string) =>{
+        try{
+            await navigator.clipboard.writeText(text);
+            alert('이메일 주소가 복사되었습니다.')
+        } catch (e){
+            alert('복사에 실패했습니다.')
+        }
+    }
+
+    return (
+        <Scontainer>
+            <Sbackgorund>
+                <Sprofile>
+                    <Simg alt='profileImge' src={profileImg} />
+                </Sprofile>
+                <SnameBox>
+                    <SwriteSpace>
+                        <Link to={'/'} style={{textDecoration:"none", color:"black"}}>
+                            <Sname>강도경</Sname>
+                        </Link>
+                        <Link to={'newPost'} style={{textDecoration:"none", color:"black"}}>
+                            <Sbtn><PiPencilSimpleLineThin color='black' size={'1em '} /></Sbtn>
+                        </Link>
+                    </SwriteSpace>
+                    <Sintro>블로그에 오신걸 환영합니다!</Sintro>
+                </SnameBox>
+                <SbtnBox>
+                    <Sbtn href='https://github.com/kangdokyoung' target="_blank"><AiFillGithub color='black' size={'2em'} /></Sbtn>
+                    <Sbtn onClick={()=>{handleCopyClipBoard('ehrud6672@naver.com')}}><AiOutlineMail color='black' size={'2em'} /></Sbtn>
+                </SbtnBox>
+                <Scategory>
+                    <ScategoryList>전체 글</ScategoryList>
+                    <Link to={'/post'} style={{textDecoration:"none", color:"black"}}>
+                        <ScategoryList onClick={()=>{dispatch(changeCategory('공지'))}}>공지</ScategoryList>
+                    </Link>
+                    <ScategoryList>코딩</ScategoryList>
+                    <ScategoryList>etc</ScategoryList>
+                </Scategory>
+                <SvisitBox>
+                    <Svisit>오늘 방문: N</Svisit>
+                    <Svisit>이달 방문: N</Svisit>
+                </SvisitBox>
+                <SendBox>
+                    <Sresume href='https://kangdokyoung.github.io/resume/' target="_blank">resume</Sresume>
+                    <Link to={'/login'} style={{textDecoration:'none', color:'black'}}>
+                        <Slogin>로그인</Slogin>
+                    </Link>
+                </SendBox>
+            </Sbackgorund>
+        </Scontainer>
+    );
+};
+
+export default Sidebar;
+
+
 
 
 const Scontainer = styled.section`
@@ -154,61 +219,3 @@ const Slogin = styled.div`
     cursor:pointer;
     user-select:none;
 `
-
-const Sidebar:React.FC = () => {
-
-    const profileImg = 'https://ifh.cc/g/ZTYyjD.webp';
-
-    const handleCopyClipBoard = async (text: string) =>{
-        try{
-            await navigator.clipboard.writeText(text);
-            alert('이메일 주소가 복사되었습니다.')
-        } catch (e){
-            alert('복사에 실패했습니다.')
-        }
-    }
-    return (
-        <Scontainer>
-            <Sbackgorund>
-                <Sprofile>
-                    <Simg alt='profileImge' src={profileImg} />
-                </Sprofile>
-                <SnameBox>
-                    <SwriteSpace>
-                        <Link to={'/'} style={{textDecoration:"none", color:"black"}}>
-                            <Sname>강도경</Sname>
-                        </Link>
-                        <Link to={'newPost'} style={{textDecoration:"none", color:"black"}}>
-                            <Sbtn><PiPencilSimpleLineThin color='black' size={'1em '} /></Sbtn>
-                        </Link>
-                    </SwriteSpace>
-                    <Sintro>블로그에 오신걸 환영합니다!</Sintro>
-                </SnameBox>
-                <SbtnBox>
-                    <Sbtn href='https://github.com/kangdokyoung' target="_blank"><AiFillGithub color='black' size={'2em'} /></Sbtn>
-                    <Sbtn onClick={()=>{handleCopyClipBoard('ehrud6672@naver.com')}}><AiOutlineMail color='black' size={'2em'} /></Sbtn>
-                </SbtnBox>
-                <Scategory>
-                    <ScategoryList>전체 글</ScategoryList>
-                    <Link to={'/post'} style={{textDecoration:"none", color:"black"}}>
-                        <ScategoryList>공지</ScategoryList>
-                    </Link>
-                    <ScategoryList>코딩</ScategoryList>
-                    <ScategoryList>etc</ScategoryList>
-                </Scategory>
-                <SvisitBox>
-                    <Svisit>오늘 방문: N</Svisit>
-                    <Svisit>이달 방문: N</Svisit>
-                </SvisitBox>
-                <SendBox>
-                    <Sresume href='https://kangdokyoung.github.io/resume/' target="_blank">resume</Sresume>
-                    <Link to={'/login'} style={{textDecoration:'none', color:'black'}}>
-                        <Slogin>로그인</Slogin>
-                    </Link>
-                </SendBox>
-            </Sbackgorund>
-        </Scontainer>
-    );
-};
-
-export default Sidebar;

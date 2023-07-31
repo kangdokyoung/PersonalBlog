@@ -1,6 +1,20 @@
-import React,{useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PostBox from './PostBox';
+
+
+const Main:React.FC = () => {
+    const post = ['인기글', '공지사항', '전체 글', '코딩', '기타 글']
+    return (
+        <Scontainer>
+            {post.map((data, i)=>{
+                return(<PostBox key={i} name={data} />)
+            })}
+        </Scontainer>
+    );
+};
+
+export default Main;
 
 
 const Scontainer = styled.div`
@@ -18,16 +32,3 @@ const Scontainer = styled.div`
         width: 100vw;
     }
 `
-
-const Main:React.FC = () => {
-    const post = ['인기글', '공지사항', '전체 글', '코딩', '기타 글']
-    return (
-        <Scontainer>
-            {post.map((data, i)=>{
-                return(<PostBox key={i} name={data} />)
-            })}
-        </Scontainer>
-    );
-};
-
-export default Main;

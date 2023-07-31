@@ -1,6 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
+const Footer:React.FC = () => {
+    return (
+        <Sfooter>
+            <ScopyRight>Copyright &#169; 2023- kangdokyoung. All right reserved.</ScopyRight>
+        </Sfooter>
+    );
+};
+
+export default Footer;
+
+
 const Sfooter = styled.footer`
     position:absolute;
     height: 60px;
@@ -14,16 +26,7 @@ const Sfooter = styled.footer`
     }
 `
 
+
 const ScopyRight = styled.span`
     font-size: 22px;
 `
-
-const Footer:React.FC = () => {
-    return (
-        <Sfooter>
-            <ScopyRight>Copyright &#169; 2023- kangdokyoung. All right reserved.</ScopyRight>
-        </Sfooter>
-    );
-};
-
-export default Footer;

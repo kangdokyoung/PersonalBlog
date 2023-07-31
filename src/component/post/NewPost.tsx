@@ -1,8 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
+// TOAST ui 
 import { Editor } from '@toast-ui/react-editor';
 import '@toast-ui/editor/dist/toastui-editor.css';
+
+// Material ui
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { Button } from '@mui/material';
+
+
+
+const NewPost:React.FC = () => {
+    const [category, setCategory] = useState('');
+    
+    
+    const handleChange = (event: SelectChangeEvent) => {
+        setCategory(event.target.value as string);
+    };
+    
+    const toolbarItems = [
+        ['heading', 'bold', 'italic', 'strike'],
+        ['hr'],
+        ['ul', 'ol', 'task'],
+        ['table', 'link'],
+        ['image'],
+        ['code'],
+        ['scrollSync'],
+    ]
+
+    return (
+        <Scontainer>
+            <StitleBox>
+                <FormControl style={{width: '200px', backgroundColor:'white'}}>
+                    <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={category}
+                    label="Category"
+                    onChange={handleChange}
+                    >
+                    <MenuItem value={'notice'}>공지</MenuItem>
+                    <MenuItem value={'coding'}>코딩</MenuItem>
+                    <MenuItem value={'etc'}>기타</MenuItem>
+                    </Select>
+                </FormControl>
+                <Button variant='outlined' style={{backgroundColor:'white'}}>작성하기</Button>
+            </StitleBox>
+            <Stitle placeholder='제목을 입력하세요'  />
+            <SeditorBox>
+                <Editor
+                    initialValue=""
+                    height="800px"
+                    initialEditType="wysiwyg"
+                    useCommandShortcut={false}
+                    toolbarItems={toolbarItems}
+                    hideModeSwitch={true}
+                />
+            </SeditorBox>
+        </Scontainer>
+    );
+};
+
+export default NewPost;
+
 
 
 const Scontainer = styled.div`
@@ -24,49 +89,31 @@ const Scontainer = styled.div`
     }
 `
 
-const Stitle = styled.div`
-
+const Stitle = styled.input`
+    height: 30px;
+    width: 100%;
+    margin-bottom: 2px; 
+    padding: 15px;
+    flex-grow:1;
+    border:none;
+    font-size: 18px;
+    ::placeholder {
+        font-size: 18px;
+    }
 `
 
-const Scategory = styled.div`
-
-`
 
 const SeditorBox = styled.div`
     width:100%;
     display:flex;
-    & > Editor {
+    & > div {
         flex-grow:1;
     }
 `
 
-const NewPost:React.FC = () => {
-    const toolbarItems = [
-        ['heading', 'bold', 'italic', 'strike'],
-        ['hr'],
-        ['ul', 'ol', 'task'],
-        ['table', 'link'],
-        ['image'],
-        ['code'],
-        ['scrollSync'],
-    ]
-    
-    return (
-        <Scontainer>
-            <Stitle>asd</Stitle>
-            <Scategory>fasdf</Scategory>
-            <SeditorBox>    
-                <Editor
-                    initialValue=""
-                    height="800px"
-                    initialEditType="wysiwyg"
-                    useCommandShortcut={false}
-                    toolbarItems={toolbarItems}
-                    hideModeSwitch={true}
-                />
-            </SeditorBox>
-        </Scontainer>
-    );
-};
-
-export default NewPost;
+const StitleBox = styled.div`
+    width: 100%;
+    margin:12px 0px 12px 0px;
+    display:flex;
+    justify-content:space-between;
+`

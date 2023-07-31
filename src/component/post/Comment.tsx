@@ -1,6 +1,26 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+const Comment:React.FC = () => {
+    const [commentData, setCommentData] = useState({
+        nickName: '지나가던 행인',
+        date: '2023-07-23',
+        comment: '화이팅 하세요!'
+    });
+    return (
+        <Scontainer>
+            <StitleBox>
+                <SnickName>{commentData.nickName}</SnickName>
+                <Sdate>{commentData.date}</Sdate>
+            </StitleBox>
+            <ScommentBox>{commentData.comment}</ScommentBox>
+        </Scontainer>
+    );
+};
+
+export default Comment;
+
+
 const Scontainer = styled.div`
     width: 80%;
     margin-top:30px;
@@ -38,22 +58,3 @@ const ScommentBox = styled.div`
     margin-left: 12px;
 `  
 
-
-const Comment:React.FC = () => {
-    const [commentData, setCommentData] = useState({
-        nickName: '지나가던 행인',
-        date: '2023-07-23',
-        comment: '화이팅 하세요!'
-    });
-    return (
-        <Scontainer>
-            <StitleBox>
-                <SnickName>{commentData.nickName}</SnickName>
-                <Sdate>{commentData.date}</Sdate>
-            </StitleBox>
-            <ScommentBox>{commentData.comment}</ScommentBox>
-        </Scontainer>
-    );
-};
-
-export default Comment;

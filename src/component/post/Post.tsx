@@ -2,6 +2,33 @@ import React from 'react';
 import styled from 'styled-components';
 import PostDetail from './PostDetail';
 
+//redux
+import { useSelector } from 'react-redux';
+import { RootState } from '../../store';
+
+const Post:React.FC = () => {
+    
+    const category = useSelector(
+        (state: RootState)=> state.category.Cateogory
+    );
+    const list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+
+    return (
+        <Scontainer>
+            <Stitle>{category}</Stitle>
+            <SpostBox>
+                {list.map((data, i)=>{
+                    return(<PostDetail key={i} />)
+                })}
+            </SpostBox>
+        </Scontainer>
+    );
+};
+
+export default Post;
+
+
 const Scontainer = styled.div`
     width: 60vw;
     min-height: 90vh;
@@ -39,21 +66,3 @@ const SpostBox = styled.div`
     margin-top:20px;
     flex-grow:1;
 `
-
-const Post:React.FC = () => {
-    const list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-
-    return (
-        <Scontainer>
-            <Stitle>공지</Stitle>
-            <SpostBox>
-                {list.map((data, i)=>{
-                    return(<PostDetail key={i} />)
-                })}
-            </SpostBox>
-        </Scontainer>
-    );
-};
-
-export default Post;

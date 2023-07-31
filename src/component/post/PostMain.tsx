@@ -2,6 +2,36 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Comment from './Comment';
 
+const PostMain:React.FC = () => {
+    const [comment, setComment] = useState('');
+
+    const inputComment = (e:React.ChangeEvent<HTMLInputElement>)=>{
+        setComment(e.target.value)
+    }
+    return (
+        <Scontainer>
+            <SmainBox>
+                <Stitle>코딩중</Stitle>
+                <Sdate>2023.07.13</Sdate>
+                <SMain>
+                    ㅁㄴㅇㄹ
+                </SMain>
+                <ScommentBox>
+                    <SwriteBox>
+                        <Swirte maxLength={200} placeholder='댓글 작성하기' onChange={(e)=>inputComment(e)} value={comment} />
+                        <SsubmitBtn>입력</SsubmitBtn>
+                    </SwriteBox>
+                    <Comment />
+                </ScommentBox>
+            </SmainBox>
+            
+        </Scontainer>
+    );
+};
+
+export default PostMain;
+
+
 const Scontainer = styled.div`
     width: 60vw;
     min-height: 90vh;
@@ -84,32 +114,3 @@ const SsubmitBtn = styled.button`
     border-radius: 20px;
     margin:20px;
 `
-
-const PostMain:React.FC = () => {
-    const [comment, setComment] = useState('');
-
-    const inputComment = (e:React.ChangeEvent<HTMLInputElement>)=>{
-        setComment(e.target.value)
-    }
-    return (
-        <Scontainer>
-            <SmainBox>
-                <Stitle>코딩중</Stitle>
-                <Sdate>2023.07.13</Sdate>
-                <SMain>
-                    ㅁㄴㅇㄹ
-                </SMain>
-                <ScommentBox>
-                    <SwriteBox>
-                        <Swirte maxLength={200} placeholder='댓글 작성하기' onChange={(e)=>inputComment(e)} value={comment} />
-                        <SsubmitBtn>입력</SsubmitBtn>
-                    </SwriteBox>
-                    <Comment />
-                </ScommentBox>
-            </SmainBox>
-            
-        </Scontainer>
-    );
-};
-
-export default PostMain;

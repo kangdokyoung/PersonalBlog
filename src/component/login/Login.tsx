@@ -2,6 +2,46 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+
+export type LoginProps = {
+    setLogin: React.Dispatch<React.SetStateAction<number>>,
+}
+
+const Login:React.FC<LoginProps> = (props) => {
+    const {setLogin} = props;
+
+
+    return (
+        <>
+            <SmainBtnBox>
+                <Link to={'/'}>
+                    <SmainBtn />
+                </Link>
+            </SmainBtnBox>
+            <Stitle>로그인</Stitle>
+            <SloginBox>
+                <SinputBox>
+                    <Stext>이메일</Stext>
+                    <Sinput type={'email'} />
+                </SinputBox>
+                <SinputBox>
+                    <Stext>비밀번호</Stext>
+                    <Sinput type={'password'} />
+                </SinputBox>
+                <SbtnBox>
+                    <SpushBtn>로그인</SpushBtn>
+                    <SpushBtn onClick={()=>setLogin(1)}>회원가입</SpushBtn>
+                </SbtnBox>
+            </SloginBox>
+        </>
+    );
+};
+
+export default Login;
+
+
+
+
 const SmainBtnBox = styled.div`
     width: 100%;
     display:flex;
@@ -74,39 +114,3 @@ const SpushBtn = styled.button`
     font-weight:regular;
     font-size: 16px;
 `
-
-export type LoginProps = {
-    setLogin: React.Dispatch<React.SetStateAction<number>>,
-}
-
-const Login:React.FC<LoginProps> = (props) => {
-    const {setLogin} = props;
-
-
-    return (
-        <>
-            <SmainBtnBox>
-                <Link to={'/'}>
-                    <SmainBtn />
-                </Link>
-            </SmainBtnBox>
-            <Stitle>로그인</Stitle>
-            <SloginBox>
-                <SinputBox>
-                    <Stext>이메일</Stext>
-                    <Sinput type={'email'} />
-                </SinputBox>
-                <SinputBox>
-                    <Stext>비밀번호</Stext>
-                    <Sinput type={'password'} />
-                </SinputBox>
-                <SbtnBox>
-                    <SpushBtn>로그인</SpushBtn>
-                    <SpushBtn onClick={()=>setLogin(1)}>회원가입</SpushBtn>
-                </SbtnBox>
-            </SloginBox>
-        </>
-    );
-};
-
-export default Login;

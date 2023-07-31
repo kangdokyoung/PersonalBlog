@@ -8,6 +8,48 @@ type PostTitle = {
 }
 
 
+const PostBox:React.FC<PostTitle> = (props) => {
+    const { name } = props;
+
+    return (
+        <Scontainer name={name}>
+            <Sname>{name}</Sname> 
+            <SpostList>
+                <Spost title='적당한 글'>
+                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
+                        <Stitle>적당한 글</Stitle>
+                    </Link>
+                    <Sdate>2023.07.01</Sdate>
+                </Spost>
+                <Spost title='적당한 글'>
+                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
+                        <Stitle>적당한 글</Stitle>
+                    </Link>
+                    <Sdate>2023.07.01</Sdate>
+                </Spost>
+                <Spost title='적당한 글'>
+                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
+                        <Stitle>적당한 글</Stitle>
+                    </Link>
+                    <Sdate>2023.07.01</Sdate>
+                </Spost>
+                <Spost title='적당한 글'>
+                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
+                        <Stitle>적당한 글</Stitle>
+                    </Link>
+                    <Sdate>2023.07.01</Sdate>
+                </Spost>
+            </SpostList>
+        </Scontainer>
+    );
+};
+
+export default PostBox;
+
+
+
+
+
 const Scontainer = styled.div<PostTitle>`
     height: 400px;
     border-radius: 20px;
@@ -73,41 +115,3 @@ const Sdate = styled.div`
     display:flex;
     align-items:center;
 `
-
-const PostBox:React.FC<PostTitle> = (props) => {
-    const { name } = props;
-
-    return (
-        <Scontainer name={name}>
-            <Sname>{name}</Sname> 
-            <SpostList>
-                <Spost title='적당한 글'>
-                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
-                        <Stitle>적당한 글</Stitle>
-                    </Link>
-                    <Sdate>2023.07.01</Sdate>
-                </Spost>
-                <Spost title='적당한 글'>
-                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
-                        <Stitle>적당한 글</Stitle>
-                    </Link>
-                    <Sdate>2023.07.01</Sdate>
-                </Spost>
-                <Spost title='적당한 글'>
-                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
-                        <Stitle>적당한 글</Stitle>
-                    </Link>
-                    <Sdate>2023.07.01</Sdate>
-                </Spost>
-                <Spost title='적당한 글'>
-                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
-                        <Stitle>적당한 글</Stitle>
-                    </Link>
-                    <Sdate>2023.07.01</Sdate>
-                </Spost>
-            </SpostList>
-        </Scontainer>
-    );
-};
-
-export default PostBox;

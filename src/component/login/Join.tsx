@@ -2,6 +2,62 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { LoginProps } from './Login';
 
+
+const Join:React.FC<LoginProps> = (props) => {
+    const {setLogin} = props;
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [checkPassword, setCheckPassword] = useState('');
+    const [nickName, setNickName] = useState('');
+
+    const inputEmail = (e:any)=>{
+        setEmail(e.target.value);
+    }
+    const inputPassword = (e:any)=>{
+        setPassword(e.target.value);
+    }
+    const inputCheckPassword = (e:any)=>{
+        setCheckPassword(e.target.value);
+    }
+    const inputNickName = (e:any)=>{
+        setNickName(e.target.value);
+    }
+
+    return (
+        <>
+            <SmainBtnBox>
+                <SmainBtn onClick={()=>setLogin(0)} />
+            </SmainBtnBox>
+            <Stitle>회원가입</Stitle>
+            <SloginBox>
+                <SinputBox>
+                    <Stext>이메일</Stext>
+                    <Sinput type={'email'} value={email} onChange={(e)=>inputEmail(e)} required />
+                </SinputBox>
+                <SinputBox>
+                    <Stext>비밀번호</Stext>
+                    <Sinput type={'password'} value={password} onChange={(e)=>inputPassword(e)} required />
+                </SinputBox>
+                <SinputBox>
+                    <Stext>비밀번호 확인</Stext>
+                    <Sinput type={'password'} value={checkPassword} onChange={(e)=>inputCheckPassword(e)} required />
+                </SinputBox>
+                <SinputBox>
+                    <Stext>닉네임</Stext>
+                    <Sinput type={'text'} value={nickName} onChange={(e)=>inputNickName(e)} required />
+                </SinputBox>
+                <SbtnBox>
+                    <SpushBtn>회원가입</SpushBtn>
+                </SbtnBox>
+            </SloginBox>
+        </>
+    );
+};
+
+export default Join;
+
+
+
 const SmainBtnBox = styled.div`
     width: 100%;
     display:flex;
@@ -74,56 +130,3 @@ const SpushBtn = styled.button`
     font-weight:regular;
     font-size: 16px;
 `
-
-const Join:React.FC<LoginProps> = (props) => {
-    const {setLogin} = props;
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [checkPassword, setCheckPassword] = useState('');
-    const [nickName, setNickName] = useState('');
-
-    const inputEmail = (e:any)=>{
-        setEmail(e.target.value);
-    }
-    const inputPassword = (e:any)=>{
-        setPassword(e.target.value);
-    }
-    const inputCheckPassword = (e:any)=>{
-        setCheckPassword(e.target.value);
-    }
-    const inputNickName = (e:any)=>{
-        setNickName(e.target.value);
-    }
-
-    return (
-        <>
-            <SmainBtnBox>
-                <SmainBtn onClick={()=>setLogin(0)} />
-            </SmainBtnBox>
-            <Stitle>회원가입</Stitle>
-            <SloginBox>
-                <SinputBox>
-                    <Stext>이메일</Stext>
-                    <Sinput type={'email'} value={email} onChange={(e)=>inputEmail(e)} />
-                </SinputBox>
-                <SinputBox>
-                    <Stext>비밀번호</Stext>
-                    <Sinput type={'password'} value={password} onChange={(e)=>inputPassword(e)} />
-                </SinputBox>
-                <SinputBox>
-                    <Stext>비밀번호 확인</Stext>
-                    <Sinput type={'password'} value={checkPassword} onChange={(e)=>inputCheckPassword(e)} />
-                </SinputBox>
-                <SinputBox>
-                    <Stext>닉네임</Stext>
-                    <Sinput type={'text'} value={nickName} onChange={(e)=>inputNickName(e)} />
-                </SinputBox>
-                <SbtnBox>
-                    <SpushBtn>회원가입</SpushBtn>
-                </SbtnBox>
-            </SloginBox>
-        </>
-    );
-};
-
-export default Join;

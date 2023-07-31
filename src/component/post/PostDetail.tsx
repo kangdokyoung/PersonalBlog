@@ -3,6 +3,23 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
+const PostDetail:React.FC = () => {
+    return (
+        <Link to={'/post/1'} style={{textDecoration:'none', color: 'black'}}>
+            <Spost>
+                <SpostThumb />
+                <SpostDetailBox>
+                    <SpostTitle>제목</SpostTitle>
+                    <SpostDetail>이 글 내용 뭐시기</SpostDetail>
+                </SpostDetailBox>
+            </Spost>
+        </Link>
+    );
+};
+
+export default PostDetail;
+
+
 const Spost = styled.div`
     width: 90%;
     height: 200px;
@@ -38,19 +55,3 @@ const SpostTitle = styled.div`
 const SpostDetail = styled.div`
     font-size: 18px;
 `
-
-const PostDetail:React.FC = () => {
-    return (
-        <Link to={'/post/1'} style={{textDecoration:'none', color: 'black'}}>
-            <Spost>
-                <SpostThumb />
-                <SpostDetailBox>
-                    <SpostTitle>제목</SpostTitle>
-                    <SpostDetail>이 글 내용 뭐시기</SpostDetail>
-                </SpostDetailBox>
-            </Spost>
-        </Link>
-    );
-};
-
-export default PostDetail;
