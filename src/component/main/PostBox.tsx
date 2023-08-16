@@ -1,6 +1,11 @@
+import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+
+import {port} from '../../../server/express';
+
+import {AxiosResponse} from 'axios';
 
 
 type PostTitle = {
@@ -10,6 +15,14 @@ type PostTitle = {
 
 const PostBox:React.FC<PostTitle> = (props) => {
     const { name } = props;
+
+    axios({
+        url: `http://localhost:${port}/readMain/${name}`,
+        method: 'get',
+        withCredentials: true,
+      }).then((res:AxiosResponse<any>)=>{ //any 타입 바꿔야됨
+        console.log(res);
+      })
 
     return (
         <Scontainer name={name}>

@@ -43,12 +43,18 @@ const Sidebar:React.FC = () => {
                     <Sbtn onClick={()=>{handleCopyClipBoard('ehrud6672@naver.com')}}><AiOutlineMail color='black' size={'2em'} /></Sbtn>
                 </SbtnBox>
                 <Scategory>
-                    <ScategoryList>전체 글</ScategoryList>
+                    <Link to={'/post'} style={{textDecoration:"none", color:"black"}}>
+                        <ScategoryList onClick={()=>{dispatch(changeCategory('전체 글'))}}>전체 글</ScategoryList>
+                    </Link>
                     <Link to={'/post'} style={{textDecoration:"none", color:"black"}}>
                         <ScategoryList onClick={()=>{dispatch(changeCategory('공지'))}}>공지</ScategoryList>
                     </Link>
-                    <ScategoryList>코딩</ScategoryList>
-                    <ScategoryList>etc</ScategoryList>
+                    <Link to={'/post'} style={{textDecoration:"none", color:"black"}}>
+                        <ScategoryList onClick={()=>{dispatch(changeCategory('코딩'))}}>코딩</ScategoryList>
+                    </Link>
+                    <Link to={'/post'} style={{textDecoration:"none", color:"black"}}>
+                        <ScategoryList onClick={()=>{dispatch(changeCategory('기타'))}}>기타</ScategoryList>
+                    </Link>
                 </Scategory>
                 <SvisitBox>
                     <Svisit>오늘 방문: N</Svisit>
