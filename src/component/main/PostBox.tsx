@@ -1,11 +1,8 @@
-import axios from 'axios';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-
-import {port} from '../../../server/express';
-
-import {AxiosResponse} from 'axios';
+import { RootState } from '../../store';
 
 
 type PostTitle = {
@@ -16,42 +13,23 @@ type PostTitle = {
 const PostBox:React.FC<PostTitle> = (props) => {
     const { name } = props;
 
-    axios({
-        url: `http://localhost:${port}/readMain/${name}`,
-        method: 'get',
-        withCredentials: true,
-      }).then((res:AxiosResponse<any>)=>{ //any 타입 바꿔야됨
-        console.log(res);
-      })
+    const mainList = useSelector((state:RootState)=>state.mainList.mainList)
+
 
     return (
         <Scontainer name={name}>
             <Sname>{name}</Sname> 
             <SpostList>
-                <Spost title='적당한 글'>
-                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
-                        <Stitle>적당한 글</Stitle>
-                    </Link>
-                    <Sdate>2023.07.01</Sdate>
-                </Spost>
-                <Spost title='적당한 글'>
-                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
-                        <Stitle>적당한 글</Stitle>
-                    </Link>
-                    <Sdate>2023.07.01</Sdate>
-                </Spost>
-                <Spost title='적당한 글'>
-                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
-                        <Stitle>적당한 글</Stitle>
-                    </Link>
-                    <Sdate>2023.07.01</Sdate>
-                </Spost>
-                <Spost title='적당한 글'>
-                    <Link to={'/post/1'} style={{textDecoration:'none'}}>
-                        <Stitle>적당한 글</Stitle>
-                    </Link>
-                    <Sdate>2023.07.01</Sdate>
-                </Spost>
+                {mainList?.filter((prop)=>prop.boardCategory === name).map((data)=>{
+                    return(
+                    <Spost title={data.boardTitle}>
+                        <Link to={`/post/${data.boardNum}`} style={{textDecoration:'none'}}>
+                            <Stitle>{data.boardTitle}</Stitle>
+                        </Link>
+                        <Sdate>{data.boardDate}</Sdate>
+                    </Spost>
+                    )
+                })}
             </SpostList>
         </Scontainer>
     );
@@ -100,7 +78,6 @@ const SpostList = styled.ul`
     margin-top:30px;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
 `
 

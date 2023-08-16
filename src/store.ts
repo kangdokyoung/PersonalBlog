@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { categorySlice } from "./Slices";
+import { categorySlice, MainSlice } from "./Slices";
 
 export const store = configureStore({
   reducer: {
     category: categorySlice.reducer,
+    mainList: MainSlice.reducer,
   },
 });
 

@@ -32,9 +32,7 @@ const Sidebar:React.FC = () => {
                         <Link to={'/'} style={{textDecoration:"none", color:"black"}}>
                             <Sname>강도경</Sname>
                         </Link>
-                        <Link to={'newPost'} style={{textDecoration:"none", color:"black"}}>
-                            <Sbtn><PiPencilSimpleLineThin color='black' size={'1em '} /></Sbtn>
-                        </Link>
+                            <Sbtn href='newPost'><PiPencilSimpleLineThin color='black' size={'1em '} /></Sbtn>
                     </SwriteSpace>
                     <Sintro>블로그에 오신걸 환영합니다!</Sintro>
                 </SnameBox>

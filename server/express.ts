@@ -13,9 +13,9 @@ app.use(express.json());
 const connection = mysql.createConnection(sqlkey);
 
 //MySQL 서버 연결
-connection.connect((err)=>{
-    if (err) {
-        console.log('Connection Error', err)
+connection.connect((error)=>{
+    if (error) {
+        console.log('Connection Error', error)
     }
 });
 
@@ -31,12 +31,12 @@ app.listen(port, ()=>{console.log(`server run in ${port}`)});
 
 //-------------------------------------------------------------------------
 
-const {readMain} = require('./read/readMain');
+const {readMainContent} = require('./read/readMainContent');
 
 
 
 //-------------------------------------------------------------------------
 
-app.get('/readMain/:name', (req, res)=>{
-    readMain(req, res)
+app.get('/readMain', (req, res)=>{
+    readMainContent(req, res)
 });

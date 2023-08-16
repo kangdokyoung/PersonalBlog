@@ -9,7 +9,7 @@ import { RootState } from '../../store';
 const Post:React.FC = () => {
     
     const category = useSelector(
-        (state: RootState)=> state.category.Cateogory
+        (state: RootState)=> state.category.category
     );
     const list = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
