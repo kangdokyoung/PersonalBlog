@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { categorySlice, MainSlice } from "./Slices";
+import { BoardDetailSlice, categorySlice, MainSlice, PostListSlice } from "./Slices";
 
 export const store = configureStore({
   reducer: {
     category: categorySlice.reducer,
     mainList: MainSlice.reducer,
+    postList: PostListSlice.reducer,
+    boardDetail: BoardDetailSlice.reducer,
   },
 });
 
