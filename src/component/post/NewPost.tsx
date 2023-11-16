@@ -19,28 +19,14 @@ const NewPost: React.FC = () => {
     setCategory(event.target.value as string);
   };
 
-  const toolbarItems = [
-    ["heading", "bold", "italic", "strike"],
-    ["hr"],
-    ["ul", "ol", "task"],
-    ["table", "link"],
-    ["image"],
-    ["code"],
-    ["scrollSync"],
-  ];
+  const toolbarItems = [["heading", "bold", "italic", "strike"], ["hr"], ["ul", "ol", "task"], ["table", "link"], ["image"], ["code"], ["scrollSync"]];
 
   return (
     <Scontainer>
       <StitleBox>
         <FormControl style={{ width: "200px", backgroundColor: "white" }}>
           <InputLabel id="demo-simple-select-label">Category</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={category}
-            label="Category"
-            onChange={handleChange}
-          >
+          <Select labelId="demo-simple-select-label" id="demo-simple-select" value={category} label="Category" onChange={handleChange}>
             <MenuItem value={"notice"}>공지</MenuItem>
             <MenuItem value={"coding"}>코딩</MenuItem>
             <MenuItem value={"etc"}>기타</MenuItem>
@@ -52,14 +38,7 @@ const NewPost: React.FC = () => {
       </StitleBox>
       <Stitle placeholder="제목을 입력하세요" />
       <SeditorBox>
-        <Editor
-          initialValue=""
-          height="800px"
-          initialEditType="wysiwyg"
-          useCommandShortcut={false}
-          toolbarItems={toolbarItems}
-          hideModeSwitch={true}
-        />
+        <Editor initialValue="" height="600px" initialEditType="wysiwyg" useCommandShortcut={false} toolbarItems={toolbarItems} hideModeSwitch={true} />
       </SeditorBox>
     </Scontainer>
   );
@@ -87,11 +66,10 @@ const Scontainer = styled.div`
 `;
 
 const Stitle = styled.input`
-  height: 30px;
+  height: 70px;
   width: 100%;
   margin-bottom: 2px;
   padding: 15px;
-  flex-grow: 1;
   border: none;
   font-size: 18px;
   ::placeholder {
@@ -102,6 +80,8 @@ const Stitle = styled.input`
 const SeditorBox = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   & > div {
     flex-grow: 1;
   }
