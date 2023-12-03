@@ -1,7 +1,7 @@
 export const sqlkey = {
-  host: "blogdb.c5sxfw61bze0.ap-northeast-2.rds.amazonaws.com",
+  host: "localhost",
   port: 3306,
-  user: "admin",
-  password: "ajdcjddl12",
+  user: "root",
+  password: "ajdcjddl12!@#",
   database: "blog",
 };

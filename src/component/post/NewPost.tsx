@@ -32,7 +32,13 @@ const NewPost: React.FC = () => {
             <MenuItem value={"etc"}>기타</MenuItem>
           </Select>
         </FormControl>
-        <Button variant="outlined" style={{ backgroundColor: "white" }}>
+        <Button
+          variant="outlined"
+          style={{ backgroundColor: "white" }}
+          onClick={() => {
+            console.log("gd");
+          }}
+        >
           작성하기
         </Button>
       </StitleBox>
