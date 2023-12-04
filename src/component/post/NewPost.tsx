@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 // TOAST ui
@@ -14,12 +14,19 @@ import { Button } from "@mui/material";
 
 const NewPost: React.FC = () => {
   const [category, setCategory] = useState("");
+  const editorRef = useRef<Editor>(null);
 
   const handleChange = (event: SelectChangeEvent) => {
     setCategory(event.target.value as string);
   };
 
   const toolbarItems = [["heading", "bold", "italic", "strike"], ["hr"], ["ul", "ol", "task"], ["table", "link"], ["image"], ["code"], ["scrollSync"]];
+
+  const hadleSubmit = () => {
+    let markDownContent = editorRef.current?.getInstance().getMarkdown();
+
+    console.log(markDownContent);
+  };
 
   return (
     <Scontainer>
@@ -36,7 +43,7 @@ const NewPost: React.FC = () => {
           variant="outlined"
           style={{ backgroundColor: "white" }}
           onClick={() => {
-            console.log("gd");
+            hadleSubmit();
           }}
         >
           작성하기
@@ -44,7 +51,7 @@ const NewPost: React.FC = () => {
       </StitleBox>
       <Stitle placeholder="제목을 입력하세요" />
       <SeditorBox>
-        <Editor initialValue="" height="600px" initialEditType="wysiwyg" useCommandShortcut={false} toolbarItems={toolbarItems} hideModeSwitch={true} />
+        <Editor ref={editorRef} initialValue="" height="600px" initialEditType="wysiwyg" useCommandShortcut={false} toolbarItems={toolbarItems} hideModeSwitch={true} />
       </SeditorBox>
     </Scontainer>
   );
