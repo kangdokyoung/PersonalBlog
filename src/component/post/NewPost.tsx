@@ -81,7 +81,7 @@ const Scontainer = styled.div`
 const Stitle = styled.input`
   height: 70px;
   width: 100%;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
   padding: 15px;
   border: none;
   font-size: 18px;
