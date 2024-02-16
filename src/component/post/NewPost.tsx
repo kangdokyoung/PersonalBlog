@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 // TOAST ui
@@ -9,23 +9,46 @@ import "@toast-ui/editor/dist/toastui-editor.css";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const NewPost: React.FC = () => {
   const [category, setCategory] = useState("");
   const editorRef = useRef<Editor>(null);
+  const [titleText, setTitleText] = useState("");
+  const navigate = useNavigate();
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setCategory(event.target.value as string);
+  const handleChange = (event: any) => {
+    setCategory(event.target.value);
   };
 
   const toolbarItems = [["heading", "bold", "italic", "strike"], ["hr"], ["ul", "ol", "task"], ["table", "link"], ["image"], ["code"], ["scrollSync"]];
 
   const hadleSubmit = () => {
     let markDownContent = editorRef.current?.getInstance().getMarkdown();
+    if (!markDownContent || titleText === "" || category === "") {
+      alert("입력되지 않은 항목이 있습니다.");
+    } else {
+      axios({
+        url: `http://localhost:3001/createNewPost`,
+        method: "post",
+        withCredentials: true,
+        data: {
+          boardCategory: category,
+          boardTitle: titleText,
+          boardContent: markDownContent,
+        },
+      }).then(() => {
+        alert("작성되었습니다.");
+      });
+      navigate("/");
+    }
+  };
 
-    console.log(markDownContent);
+  const changeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitleText(e.target.value);
   };
 
   return (
@@ -33,7 +56,7 @@ const NewPost: React.FC = () => {
       <StitleBox>
         <FormControl style={{ width: "200px", backgroundColor: "white" }}>
           <InputLabel id="demo-simple-select-label">Category</InputLabel>
-          <Select labelId="demo-simple-select-label" id="demo-simple-select" value={category} label="Category" onChange={handleChange}>
+          <Select labelId="demo-simple-select-label" id="demo-simple-select" value={category} label="Category" onChange={(e) => handleChange(e)}>
             <MenuItem value={"notice"}>공지</MenuItem>
             <MenuItem value={"coding"}>코딩</MenuItem>
             <MenuItem value={"etc"}>기타</MenuItem>
@@ -49,7 +72,7 @@ const NewPost: React.FC = () => {
           작성하기
         </Button>
       </StitleBox>
-      <Stitle placeholder="제목을 입력하세요" />
+      <Stitle placeholder="제목을 입력하세요" onChange={(e) => changeTitle(e)} />
       <SeditorBox>
         <Editor ref={editorRef} initialValue="" height="600px" initialEditType="wysiwyg" useCommandShortcut={false} toolbarItems={toolbarItems} hideModeSwitch={true} />
       </SeditorBox>

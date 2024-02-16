@@ -22,7 +22,6 @@ const Sidebar: React.FC = () => {
   };
 
   function changePostList(category: string) {
-    console.log("sidebar category", category);
     axios({
       url: `http://localhost:3001/readBoardList/${category}`,
       method: "get",
@@ -66,7 +65,7 @@ const Sidebar: React.FC = () => {
             <ScategoryList
               onClick={() => {
                 dispatch(changeCategory("전체 글"));
-                changePostList("전체 글");
+                changePostList("all");
               }}
             >
               전체 글
@@ -76,7 +75,7 @@ const Sidebar: React.FC = () => {
             <ScategoryList
               onClick={() => {
                 dispatch(changeCategory("공지사항"));
-                changePostList("공지사항");
+                changePostList("notice");
               }}
             >
               공지
@@ -86,7 +85,7 @@ const Sidebar: React.FC = () => {
             <ScategoryList
               onClick={() => {
                 dispatch(changeCategory("코딩"));
-                changePostList("코딩");
+                changePostList("coding");
               }}
             >
               코딩
@@ -96,7 +95,7 @@ const Sidebar: React.FC = () => {
             <ScategoryList
               onClick={() => {
                 dispatch(changeCategory("기타"));
-                changePostList("기타");
+                changePostList("etc");
               }}
             >
               기타

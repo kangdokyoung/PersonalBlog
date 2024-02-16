@@ -37,6 +37,7 @@ app.listen(port, () => {
 const { readMainContent } = require("./read/readMainContent");
 const { readBoardList } = require("./read/readBoardList");
 const { readBoardDetail } = require("./read/readBoardDetail");
+const { createNewPost } = require("./create/createNewPost");
 
 //-------------------------------------------------------------------------
 
@@ -50,4 +51,8 @@ app.get("/readBoardList/:category", (req, res) => {
 
 app.get("/readBoardDetail/:boardNum", (req, res) => {
   readBoardDetail(req, res);
+});
+
+app.post("/createNewPost", (req, res) => {
+  createNewPost(req, res);
 });
