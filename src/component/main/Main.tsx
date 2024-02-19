@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { getMainList } from "../../Slices";
 
 const Main: React.FC = () => {
-  const post = ["인기글", "공지사항", "전체 글", "코딩", "기타 글"];
+  const post = ["popular", "noticec", "all", "coding", "etc"];
 
   const dispatch = useDispatch();
 

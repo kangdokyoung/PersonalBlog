@@ -5,5 +5,20 @@ import type { History, Blocker, Transition } from "history";
 export const useBlocker = (blocker: Blocker, when = true): void => {
   const navigator = useContext(UNSAFE_NavigationContext).navigator as History;
 
-  useEffect;
+  useEffect(() => {
+    if (!when) return;
+    const unblock = navigator.block((tx: Transition) => {
+      const autoUnblockingTx = {
+        ...tx,
+        retry() {
+          unblock();
+          tx.retry();
+        },
+      };
+
+      blocker(autoUnblockingTx);
+    });
+
+    return unblock;
+  }, [navigator, blocker, when]);
 };
