@@ -13,6 +13,7 @@ import Select from "@mui/material/Select";
 import { Button } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import AlertBox from "../alert/AlertBox";
 
 const NewPost: React.FC = () => {
   const [category, setCategory] = useState("");
@@ -53,6 +54,7 @@ const NewPost: React.FC = () => {
 
   return (
     <Scontainer>
+      <AlertBox />
       <StitleBox>
         <FormControl style={{ width: "200px", backgroundColor: "white" }}>
           <InputLabel id="demo-simple-select-label">Category</InputLabel>
