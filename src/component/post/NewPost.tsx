@@ -54,7 +54,7 @@ const NewPost: React.FC = () => {
 
   return (
     <Scontainer>
-      <AlertBox />
+      {/* <AlertBox /> */}
       <StitleBox>
         <FormControl style={{ width: "200px", backgroundColor: "white" }}>
           <InputLabel id="demo-simple-select-label">Category</InputLabel>
