@@ -9,6 +9,7 @@ import Post from "./component/post/Post";
 import LoginPage from "./page/LoginPage";
 import PostMain from "./component/post/PostMain";
 import NewPost from "./component/post/NewPost";
+import Banner from "./component/banner/banner";
 
 const GlobalStyle = createGlobalStyle`
 *, *::before, *::after {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
       <GlobalStyle />
       {
         <BrowserRouter>
+          <Banner />
           <Sidebar />
           <Routes>
             <Route path="/" element={<Main />} />
@@ -44,4 +46,5 @@ export default App;
 const Sbackground = styled.div`
   background-color: #f3f3f3;
   position: relative;
+  padding-top: 90px;
 `;
