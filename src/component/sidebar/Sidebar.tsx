@@ -94,7 +94,7 @@ export default Sidebar;
 
 const Scontainer = styled.section`
   position: fixed;
-  width: 400px;
+  width: 350px;
   height: calc(100vh - 90px);
   z-index: 1;
   @media screen and (max-width: 768px) {
@@ -104,14 +104,13 @@ const Scontainer = styled.section`
 
 const Sbackgorund = styled.div`
   background-color: #c1c1c1;
-  width: 350px;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   @media screen and (max-height: 980px) {
-    height: 80vh;
     min-height: 500px;
   }
 `;

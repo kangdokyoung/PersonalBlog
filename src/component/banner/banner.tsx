@@ -1,4 +1,5 @@
 import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
+import { CgNotes } from "react-icons/cg";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -16,27 +17,22 @@ const Banner = () => {
     <BannerContainer>
       <Logo>DuckGyu</Logo>
       <ButtonContainer>
-        <SbtnBox>
-          <Sbtn href="https://github.com/kangdokyoung" target="_blank">
-            <AiFillGithub color="black" size={"2em"} />
-          </Sbtn>
-          <Sbtn
-            onClick={() => {
-              handleCopyClipBoard("ehrud6672@naver.com");
-            }}
-          >
-            <AiOutlineMail color="black" size={"2em"} />
-          </Sbtn>
-        </SbtnBox>
-
-        <SendBox>
-          <Sresume href="https://kangdokyoung.github.io/resume/" target="_blank">
-            resume
-          </Sresume>
-          <Link to={"/login"} style={{ textDecoration: "none", color: "black" }}>
-            <Slogin>로그인</Slogin>
-          </Link>
-        </SendBox>
+        <Sbtn href="https://github.com/kangdokyoung" target="_blank">
+          <AiFillGithub color="black" size={"2em"} />
+        </Sbtn>
+        <Sbtn
+          onClick={() => {
+            handleCopyClipBoard("ehrud6672@naver.com");
+          }}
+        >
+          <AiOutlineMail color="black" size={"2em"} />
+        </Sbtn>
+        <Sbtn href="https://kangdokyoung.github.io/resume/" target="_blank">
+          <CgNotes color="black" size={"2em"} />
+        </Sbtn>
+        <Link to={"/login"} style={{ textDecoration: "none", color: "black" }}>
+          <Slogin>로그인</Slogin>
+        </Link>
       </ButtonContainer>
     </BannerContainer>
   );
@@ -66,12 +62,6 @@ const ButtonContainer = styled.div`
   width: 20%;
 `;
 
-const SbtnBox = styled.nav`
-  display: flex;
-  width: 40%;
-  justify-content: space-between;
-`;
-
 const Sbtn = styled.a`
   transition: all 0.1s;
   cursor: pointer;
@@ -82,35 +72,18 @@ const Sbtn = styled.a`
   }
 `;
 
-const SendBox = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
-`;
-
-const Sresume = styled.a`
-  text-decoration: none;
-  color: black;
-  background-color: #d9d9d9;
-  border-radius: 12px;
-  width: 80px;
-  height: 33px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-`;
-
-const Slogin = styled.div`
-  background-color: #d9d9d9;
-  border-radius: 12px;
-  width: 80px;
+const Slogin = styled.span`
   height: 33px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   user-select: none;
+  font-weight: bold;
+  font-size: 18px;
+  :hover {
+    transform: scale(1.1);
+  }
 `;
 
 export default Banner;
