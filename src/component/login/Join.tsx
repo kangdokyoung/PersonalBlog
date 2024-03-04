@@ -22,6 +22,15 @@ const Join: React.FC<LoginProps> = (props) => {
     setNickName(e.target.value);
   };
 
+  const checkFunction = () => {
+    if (password && checkPassword && password === checkPassword) {
+      alert("확인");
+      return;
+    } else {
+      alert("비밀번호와 확인 란이 일치하지 않습니다.");
+    }
+  };
+
   return (
     <>
       <SmainBtnBox>
@@ -31,42 +40,24 @@ const Join: React.FC<LoginProps> = (props) => {
       <SloginBox>
         <SinputBox>
           <Stext>이메일</Stext>
-          <Sinput
-            type={"email"}
-            value={email}
-            onChange={(e) => inputEmail(e)}
-            required
-          />
+          <Sinput type={"email"} value={email} onChange={(e) => inputEmail(e)} required />
         </SinputBox>
         <SinputBox>
           <Stext>비밀번호</Stext>
-          <Sinput
-            type={"password"}
-            value={password}
-            onChange={(e) => inputPassword(e)}
-            required
-          />
+          <Sinput type={"password"} minLength={6} value={password} onChange={(e) => inputPassword(e)} required />
         </SinputBox>
         <SinputBox>
           <Stext>비밀번호 확인</Stext>
-          <Sinput
-            type={"password"}
-            value={checkPassword}
-            onChange={(e) => inputCheckPassword(e)}
-            required
-          />
+          <Sinput type={"password"} minLength={6} value={checkPassword} onChange={(e) => inputCheckPassword(e)} required />
         </SinputBox>
         <SinputBox>
           <Stext>닉네임</Stext>
-          <Sinput
-            type={"text"}
-            value={nickName}
-            onChange={(e) => inputNickName(e)}
-            required
-          />
+          <Sinput type={"text"} value={nickName} onChange={(e) => inputNickName(e)} required />
         </SinputBox>
         <SbtnBox>
-          <SpushBtn>회원가입</SpushBtn>
+          <SpushBtn type="button" onClick={checkFunction}>
+            회원가입
+          </SpushBtn>
         </SbtnBox>
       </SloginBox>
     </>
