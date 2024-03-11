@@ -25,6 +25,8 @@ const Join: React.FC<LoginProps> = (props) => {
     setNickName(e.target.value);
   };
 
+  // 회원가입 예외처리 제작해야함.
+
   const checkFunction = () => {
     if (password && checkPassword && password === checkPassword) {
       axios({
