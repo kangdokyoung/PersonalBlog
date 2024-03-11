@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
 import { CgNotes } from "react-icons/cg";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+
+type Span = {
+  isClick: boolean;
+  index?: number;
+};
 
 const Banner = () => {
+  const [bannerToggle, setBannerToggle] = useState(false);
   const handleCopyClipBoard = async (text: string) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -34,6 +41,13 @@ const Banner = () => {
           <Slogin>로그인</Slogin>
         </Link>
       </ButtonContainer>
+      <SmenuContainer>
+        <SmenuToggle onClick={() => setBannerToggle(!bannerToggle)}>
+          <SmenuSpan isClick={bannerToggle} index={1} />
+          <SmenuSpan isClick={bannerToggle} index={2} />
+          <SmenuSpan isClick={bannerToggle} index={3} />
+        </SmenuToggle>
+      </SmenuContainer>
     </BannerContainer>
   );
 };
@@ -60,6 +74,9 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
   width: 20%;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Sbtn = styled.a`
@@ -84,6 +101,53 @@ const Slogin = styled.span`
   :hover {
     transform: scale(1.1);
   }
+`;
+
+const SmenuContainer = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+`;
+
+const SmenuToggle = styled.div`
+  display: inline-block;
+  transition: all 0.4s;
+  box-sizing: border-box;
+  position: relative;
+  width: 50px;
+  height: 44px;
+  margin-top: 10px;
+  cursor: pointer;
+`;
+
+const SmenuSpan = styled.span<Span>`
+  display: block;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 10px;
+  width: 100%;
+  height: 4px;
+  background-color: black;
+  border-radius: 4px;
+  transition: all 0.3s;
+  ${(props) => {
+    if (props.isClick === true) {
+      if (props.index === 1) {
+        return css`
+          transform: translateY(14px) rotate(-45deg);
+        `;
+      } else if (props.index === 2) {
+        return css`
+          opacity: 0;
+        `;
+      } else if (props.index === 3) {
+        return css`
+          transform: translateY(-14px) rotate(45deg);
+        `;
+      }
+    }
+  }};
 `;
 
 export default Banner;

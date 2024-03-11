@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { getMainList } from "../../Slices";
 
 const Main: React.FC = () => {
-  const post = ["popular", "notice", "all", "coding", "etc"];
+  const post = ["notice", "all", "coding", "etc"];
 
   const dispatch = useDispatch();
 
@@ -24,9 +24,6 @@ const Main: React.FC = () => {
   const distribution = (input: string): string => {
     let output = "";
     switch (input) {
-      case "popular":
-        output = "인기글";
-        break;
       case "notice":
         output = "공지사항";
         break;
@@ -68,7 +65,7 @@ const Scontainer = styled.div`
   margin-left: 500px;
   display: flex;
   flex-wrap: wrap;
-  @media screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     margin-left: 0px;
     overflow: visible;
     width: 100vw;

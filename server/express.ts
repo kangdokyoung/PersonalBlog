@@ -38,6 +38,7 @@ const { readMainContent } = require("./read/readMainContent");
 const { readBoardList } = require("./read/readBoardList");
 const { readBoardDetail } = require("./read/readBoardDetail");
 const { createNewPost } = require("./create/createNewPost");
+const { createNewAccount } = require("./create/createNewAccount");
 
 //-------------------------------------------------------------------------
 
@@ -55,4 +56,8 @@ app.get("/readBoardDetail/:boardNum", (req, res) => {
 
 app.post("/createNewPost", (req, res) => {
   createNewPost(req, res);
+});
+
+app.post("/createNewAccount", (req, res) => {
+  createNewAccount(req, res);
 });

@@ -46,6 +46,7 @@ const SmainBtnBox = styled.div`
 const SmainBtn = styled.div`
   width: 20px;
   height: 20px;
+  margin-left: 5px;
   border-top: 2px solid black;
   border-left: 2px solid black;
   transform: rotate(-45deg);

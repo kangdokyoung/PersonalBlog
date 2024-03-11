@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { LoginProps } from "./Login";
 
@@ -8,6 +10,7 @@ const Join: React.FC<LoginProps> = (props) => {
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
   const [nickName, setNickName] = useState("");
+  const navigate = useNavigate();
 
   const inputEmail = (e: any) => {
     setEmail(e.target.value);
@@ -24,8 +27,23 @@ const Join: React.FC<LoginProps> = (props) => {
 
   const checkFunction = () => {
     if (password && checkPassword && password === checkPassword) {
-      alert("확인");
-      return;
+      axios({
+        url: `http://localhost:3001/createNewAccount`,
+        method: "post",
+        withCredentials: true,
+        data: {
+          userId: email,
+          userPassword: password,
+          userNickName: nickName,
+        },
+      }).then((res) => {
+        if (res.data.success === 0) {
+          alert("가입이 완료되었습니다.");
+        } else {
+          alert("가입에 실패하였습니다.");
+        }
+      });
+      navigate("/");
     } else {
       alert("비밀번호와 확인 란이 일치하지 않습니다.");
     }

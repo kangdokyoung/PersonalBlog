@@ -14,7 +14,7 @@ const PostBox: React.FC<PostTitle> = (props) => {
   const mainList = useSelector((state: RootState) => state.mainList.mainList);
 
   return (
-    <Scontainer name={name}>
+    <Scontainer>
       <Sname>{name}</Sname>
       <SpostList>
         {mainList
@@ -22,11 +22,8 @@ const PostBox: React.FC<PostTitle> = (props) => {
           .map((data, i) => {
             return (
               <Spost title={data.boardTitle} key={i}>
-                <Link
-                  to={`/post/${data.boardNum}`}
-                  style={{ textDecoration: "none" }}
-                >
-                  <Stitle>{data.boardTitle}</Stitle>
+                <Link to={`/post/${data.boardNum}`} style={{ textDecoration: "none" }}>
+                  <Stitle name={name}>{data.boardTitle}</Stitle>
                 </Link>
                 <Sdate>{data.boardDate}</Sdate>
               </Spost>
@@ -39,27 +36,22 @@ const PostBox: React.FC<PostTitle> = (props) => {
 
 export default PostBox;
 
-const Scontainer = styled.div<PostTitle>`
+const Scontainer = styled.div`
   height: 400px;
   border-radius: 20px;
   border: 1px solid black;
   box-shadow: 2px 2px 2px grey;
   margin: 30px;
-  @media screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     width: 90%;
   }
-  ${(props) => {
-    if (props.name == "인기글") {
-      return css`
-        width: 85%;
-      `;
-    } else {
-      return css`
-        width: 500px;
-        min-width: 450px;
-      `;
-    }
-  }}
+  @media (min-width: 768px) and (max-width: 1708px) {
+    width: 85%;
+  }
+  @media (min-width: 1708px) {
+    width: 500px;
+    min-width: 450px;
+  }
 `;
 
 const Sname = styled.div`
@@ -92,10 +84,16 @@ const Spost = styled.li`
   }
 `;
 
-const Stitle = styled.div`
-  color: blue;
+const Stitle = styled.div<PostTitle>`
+  color: black;
   font-size: 20px;
   font-wight: bold;
+  ${(props) => {
+    if (props.name === "공지사항")
+      return css`
+        color: red;
+      `;
+  }}
 `;
 
 const Sdate = styled.div`

@@ -9,7 +9,7 @@ import axios from "axios";
 const Sidebar: React.FC = () => {
   const dispatch = useDispatch();
 
-  const profileImg = "https://ifh.cc/g/ZTYyjD.webp";
+  const profileImg = "https://ifh.cc/g/vYWdrd.jpg";
 
   function changePostList(category: string) {
     axios({
