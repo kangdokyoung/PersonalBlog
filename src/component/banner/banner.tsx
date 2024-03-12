@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { AiFillGithub, AiOutlineMail } from "react-icons/ai";
 import { CgNotes } from "react-icons/cg";
@@ -22,7 +23,20 @@ const Banner = () => {
 
   return (
     <BannerContainer>
-      <Logo>DuckGyu</Logo>
+      <button
+        onClick={() =>
+          axios({
+            url: `http://localhost:3001/createNewAccount`,
+            method: "post",
+            withCredentials: true,
+          })
+        }
+      >
+        asdf
+      </button>
+      <Link to={"/"} style={{ textDecoration: "none", color: "black" }}>
+        <Logo>DuckGyu</Logo>
+      </Link>
       <ButtonContainer>
         <Sbtn href="https://github.com/kangdokyoung" target="_blank">
           <AiFillGithub color="black" size={"2em"} />

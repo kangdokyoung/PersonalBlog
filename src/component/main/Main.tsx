@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import PostBox from "./PostBox";
+import { distribution } from "../../hooks/useDistribution";
 
 import axios from "axios";
 import { useDispatch } from "react-redux";
@@ -20,29 +21,6 @@ const Main: React.FC = () => {
       dispatch(getMainList(res.data.data));
     });
   }, []);
-
-  const distribution = (input: string): string => {
-    let output = "";
-    switch (input) {
-      case "notice":
-        output = "공지사항";
-        break;
-
-      case "all":
-        output = "전체 글";
-        break;
-      case "coding":
-        output = "코딩";
-        break;
-      case "etc":
-        output = "기타";
-        break;
-      default:
-        break;
-    }
-
-    return output;
-  };
 
   return (
     <Scontainer>

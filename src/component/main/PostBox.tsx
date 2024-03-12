@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
+import { distribution } from "../../hooks/useDistribution";
+import { getTimeByNow } from "../../hooks/useGetTime";
 import { RootState } from "../../store";
 
 type PostTitle = {
@@ -17,18 +19,29 @@ const PostBox: React.FC<PostTitle> = (props) => {
     <Scontainer>
       <Sname>{name}</Sname>
       <SpostList>
-        {mainList
-          ?.filter((prop) => prop.boardCategory === name)
-          .map((data, i) => {
-            return (
-              <Spost title={data.boardTitle} key={i}>
-                <Link to={`/post/${data.boardNum}`} style={{ textDecoration: "none" }}>
-                  <Stitle name={name}>{data.boardTitle}</Stitle>
-                </Link>
-                <Sdate>{data.boardDate}</Sdate>
-              </Spost>
-            );
-          })}
+        {name !== "전체 글"
+          ? mainList
+              ?.filter((prop) => distribution(prop.boardCategory) === name)
+              .map((data, i) => {
+                return (
+                  <Spost title={data.boardTitle} key={i}>
+                    <Link to={`/post/${data.boardNum}`} style={{ textDecoration: "none" }}>
+                      <Stitle name={name}>{data.boardTitle}</Stitle>
+                    </Link>
+                    <Sdate>{getTimeByNow(data.boardDate)}</Sdate>
+                  </Spost>
+                );
+              })
+          : mainList.map((data, i) => {
+              return (
+                <Spost title={data.boardTitle} key={i}>
+                  <Link to={`/post/${data.boardNum}`} style={{ textDecoration: "none" }}>
+                    <Stitle name={name}>{data.boardTitle}</Stitle>
+                  </Link>
+                  <Sdate>{getTimeByNow(data.boardDate)}</Sdate>
+                </Spost>
+              );
+            })}
       </SpostList>
     </Scontainer>
   );
