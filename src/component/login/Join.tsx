@@ -25,8 +25,6 @@ const Join: React.FC<LoginProps> = (props) => {
     setNickName(e.target.value);
   };
 
-  // 회원가입 예외처리 제작해야함.
-
   const checkFunction = () => {
     if (password && checkPassword && password === checkPassword) {
       axios({
@@ -41,11 +39,13 @@ const Join: React.FC<LoginProps> = (props) => {
       }).then((res) => {
         if (res.data.success === 0) {
           alert("가입이 완료되었습니다.");
+          navigate("/");
+        } else if (res.data.success === 1) {
+          alert("이미 가입된 이메일입니다.");
         } else {
-          alert("가입에 실패하였습니다.");
+          alert("이미 존재하는 닉네임 입니다.");
         }
       });
-      navigate("/");
     } else {
       alert("비밀번호와 확인 란이 일치하지 않습니다.");
     }

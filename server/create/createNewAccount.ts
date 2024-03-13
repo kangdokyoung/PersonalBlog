@@ -9,18 +9,24 @@ exports.createNewAccount = (req: Request, res: Response) => {
 
   con.query("SELECT * FROM user", (error, row1, fields) => {
     if (error) throw error;
-
-    const checkId = row1.foreach((data: any, i: number): boolean => {
-      if (data.userId === userId) return false;
-      else return true;
+    let idArray = row1.map((data: any) => {
+      return data.userId;
     });
 
-    if (checkId) {
-      con.query("INSERT INTO user values(default, ?, ?, ?, default) ", [userId, userPassword, userNickName], (error, row1, fields) => {
-        if (error) throw error;
-        res.send({ success: 0, data: row1 });
-        console.log(row1);
-      });
+    let nickNameArray = row1.map((data: any) => {
+      return data.userNickName;
+    });
+
+    if (!idArray.includes(userId)) {
+      if (!nickNameArray.includes(userNickName)) {
+        con.query("INSERT INTO user values(default, ?, ?, ?, default) ", [userId, userPassword, userNickName], (error, row1, fields) => {
+          if (error) throw error;
+          res.send({ success: 0, data: row1 });
+          console.log(row1);
+        });
+      } else {
+        res.send({ success: 2 });
+      }
     } else {
       res.send({ success: 1 });
     }
