@@ -42,22 +42,22 @@ const { createNewAccount } = require("./create/createNewAccount");
 
 //-------------------------------------------------------------------------
 
-app.get("/readMainContent", (req, res) => {
-  readMainContent(req, res);
+app.get("/readMainContent", async (req, res) => {
+  await readMainContent(req, res);
 });
 
-app.get("/readBoardList/:category", (req, res) => {
-  readBoardList(req, res);
+app.get("/readBoardList/:category", async (req, res) => {
+  await readBoardList(req, res);
 });
 
-app.get("/readBoardDetail/:boardNum", (req, res) => {
-  readBoardDetail(req, res);
+app.get("/readBoardDetail/:boardNum", async (req, res) => {
+  await readBoardDetail(req, res);
 });
 
-app.post("/createNewPost", (req, res) => {
-  createNewPost(req, res);
+app.post("/createNewPost", async (req, res) => {
+  await createNewPost(req, res);
 });
 
-app.post("/createNewAccount", (req, res) => {
-  createNewAccount(req, res);
+app.post("/createNewAccount", async (req, res) => {
+  await createNewAccount(req, res);
 });
