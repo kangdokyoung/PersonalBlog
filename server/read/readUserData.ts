@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import mysql from "mysql";
-import { jwtKey, sqlkey } from "../../secretKey";
+import { jwtKey, sqlkey } from "../../src/keys/secretKey";
 import jwt from "jsonwebtoken";
 
 const con = mysql.createConnection(sqlkey);

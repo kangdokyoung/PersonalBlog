@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import mysql from "mysql";
-import { sqlkey } from "../../secretKey";
+import { sqlkey } from "../../src/keys/secretKey";
 
 const con = mysql.createConnection(sqlkey);
 

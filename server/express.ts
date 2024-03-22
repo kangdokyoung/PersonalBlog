@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 
 import mysql from "mysql";
-import { sqlkey } from "../secretKey";
+import { sqlkey } from "../src/keys/secretKey";
 
 export const port = 3001;
 

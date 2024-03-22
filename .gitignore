@@ -1,2 +1,7 @@
 node_modules
+
+#이거 왜안됨
+
 .secretKey
+
+/keys
