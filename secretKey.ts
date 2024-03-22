@@ -6,8 +6,3 @@ export const sqlkey = {
   database: "blog",
 };
 export const jwtKey = "ajdcjddl12!@#";
-export const option = {
-  algorithm: "HS256",
-  expiresIn: "10m",
-  issuer: "admin",
-};

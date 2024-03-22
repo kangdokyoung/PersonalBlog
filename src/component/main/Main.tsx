@@ -40,7 +40,7 @@ const Scontainer = styled.div`
   padding-bottom: 100px;
   position: relative;
   overflow: visible;
-  margin-left: 500px;
+  margin-left: 450px;
   display: flex;
   flex-wrap: wrap;
   @media (max-width: 768px) {

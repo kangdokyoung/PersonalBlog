@@ -39,6 +39,7 @@ const { readBoardList } = require("./read/readBoardList");
 const { readBoardDetail } = require("./read/readBoardDetail");
 const { createNewPost } = require("./create/createNewPost");
 const { createNewAccount } = require("./create/createNewAccount");
+const { readUserData } = require("./read/readUserData");
 
 //-------------------------------------------------------------------------
 
@@ -60,4 +61,8 @@ app.post("/createNewPost", async (req, res) => {
 
 app.post("/createNewAccount", async (req, res) => {
   await createNewAccount(req, res);
+});
+
+app.post("/readUserData", async (req, res) => {
+  await readUserData(req, res);
 });

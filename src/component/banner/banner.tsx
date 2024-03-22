@@ -26,9 +26,15 @@ const Banner = () => {
       <button
         onClick={() =>
           axios({
-            url: `http://localhost:3001/createNewAccount`,
+            url: `http://localhost:3001/readuserData`,
             method: "post",
             withCredentials: true,
+            data: {
+              userId: "ehrud6672@naver.com",
+              userPassword: "1111",
+            },
+          }).then((res) => {
+            console.log(res);
           })
         }
       >
